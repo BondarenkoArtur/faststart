@@ -37,7 +37,7 @@
     # ~/.xinitrc: xinitrc
     # ~/.zshrc: zshrc
 
-- shell:
+    # - shell:
         # - chmod +x bin/* i3/blocks/*
         # - chmod +x oh-my-zsh/custom/plugins/fcote/bin/*
         # - chmod +x oh-my-zsh/custom/plugins/fcote/bin/lib/*
