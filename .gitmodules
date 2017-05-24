@@ -1,0 +1,3 @@
+[submodule "dotfiles-manjaro-i3"]
+	path = dotfiles-manjaro-i3
+	url = https://github.com/BondarenkoArtur/dotfiles-manjaro-i3
