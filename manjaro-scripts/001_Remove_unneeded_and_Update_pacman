@@ -1,0 +1,5 @@
+yaourt -R xfce4-goodies 
+yaourt -Qtd
+yaourt -Rnsc xfce4 catfish blueman
+yaourt -R libreoffice-still
+sudo pacman-mirrors --geoip && sudo pacman -Syu --noconfirm
