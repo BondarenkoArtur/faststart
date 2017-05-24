@@ -68,11 +68,12 @@ URxvt*saveLines:                  5000
 ! URxvt*transparent:              true
 ! URxvt*shading:                  138
 
+Rxvt.perl-ext-common:            ...,clipboard
+URxvt.keysym.M-C-c:              perl:clipboard:copy
+URxvt.keysym.M-v:                perl:clipboard:paste
+URxvt.keysym.M-C-v:              perl:clipboard:paste_escaped
+
 ! other possible settings:
-! Rxvt.perl-ext-common:            ...,clipboard
-! URxvt.keysym.M-C-c:              perl:clipboard:copy
-! URxvt.keysym.M-v:                perl:clipboard:paste
-! URxvt.keysym.M-C-v:              perl:clipboard:paste_escaped
 ! URxvt*termName:                  string
 ! URxvt*geometry:                  geometry
 ! URxvt*chdir:                     string
