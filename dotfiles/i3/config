@@ -1,0 +1,291 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# Set mod key (Mod1=<Alt>, Mod4=<Super> or <Windows>)
+set $mod Mod4
+set $mod_alt Mod1
+
+# Startup
+
+# Start numlock by default
+exec --no-startup-id numlockx
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+#font pango:monospace 8
+#font pango:DejaVu Sans Mono 8
+font pango: Terminus (TTF) 9 
+#font -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Windows properties
+focus_follows_mouse no
+new_window pixel 1 
+new_float normal
+gaps inner 10
+gaps outer -4
+smart_gaps on
+smart_borders on
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+x exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+w kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod_alt+Tab focus right
+bindsym $mod_alt+Shift+Tab focus left
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+Shift+t layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+q floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+a focus child
+
+# Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 1 sset 'Master' 1+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 1 sset 'Master' 1- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id amixer sset 'Master' toggle
+bindsym $mod+F10 exec --no-startup-id amixer -c 1 sset 'Master' 1+ 
+bindsym $mod+F9 exec --no-startup-id amixer -c 1 sset 'Master' 1- 
+bindsym $mod+F11 exec --no-startup-id amixer sset 'Master' toggle
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightness
+bindsym $mod+F3 exec --no-startup-id light -A 10 
+bindsym $mod+F2 exec --no-startup-id light -U 10 
+bindsym $mod+F1 exec --no-startup-id light -S 0 
+
+# Workspaces
+#          
+# http://fortawesome.github.io/Font-Awesome/cheatsheet/
+
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:
+set $ws5 5:
+set $ws6 6:
+set $ws7 7:
+set $ws8 8:
+set $ws9 9:
+set $ws0 0:
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+bindsym $mod+grave workspace $ws0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0
+bindsym $mod+Shift+grave move container to workspace $ws0
+
+# Support NumPad with code-keys ################################
+#     [+] [-] |      [86] [82]
+# [7] [8] [9] | [79] [80] [81]
+# [4] [5] [6] | [83] [84] [85]
+# [1] [2] [3] | [87] [88] [89]
+#     [0]     |      [90]
+bindcode $mod+87 workspace $ws1
+bindcode $mod+88 workspace $ws2
+bindcode $mod+89 workspace $ws3
+bindcode $mod+83 workspace $ws4
+bindcode $mod+84 workspace $ws5
+bindcode $mod+85 workspace $ws6
+bindcode $mod+79 workspace $ws7
+bindcode $mod+80 workspace $ws8
+bindcode $mod+81 workspace $ws9
+bindcode $mod+90 workspace $ws0
+
+# move focused container to workspace
+bindcode $mod+Shift+87 move container to workspace $ws1
+bindcode $mod+Shift+88 move container to workspace $ws2
+bindcode $mod+Shift+89 move container to workspace $ws3
+bindcode $mod+Shift+83 move container to workspace $ws4
+bindcode $mod+Shift+84 move container to workspace $ws5
+bindcode $mod+Shift+85 move container to workspace $ws6
+bindcode $mod+Shift+79 move container to workspace $ws7
+bindcode $mod+Shift+80 move container to workspace $ws8
+bindcode $mod+Shift+81 move container to workspace $ws9
+bindcode $mod+Shift+90 move container to workspace $ws0
+
+# switching between workspace
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+# resizing
+bindsym $mod+$mod_alt+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+$mod_alt+Down resize grow height 10 px or 10 ppt
+bindsym $mod+$mod_alt+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+$mod_alt+Right resize grow width 10 px or 10 ppt
+
+# static resizing
+bindsym $mod+s floating enable resize set 1280 px 720 px move position 0px 0px 
+bindsym $mod+Shift+s floating enable resize set 960 px 720 px move position 0px 0px 
+bindsym $mod+z floating enable resize set 320 px 882 px move position 1280px 0px 
+bindsym $mod+Shift+z floating enable resize set 640 px 882 px move position 960px 0px 
+# bindsym $mod+z floating enable resize set 1280 px 720 px move position center 
+
+# screenshot
+bindcode $mod+218 exec --no-startup-id "i3-scrot -s"
+bindcode $mod_alt+218 exec --no-startup-id "i3-scrot -w"
+bindcode 218 exec --no-startup-id "i3-scrot -d"
+
+# microphone volume
+bindsym $mod+F4 exec --no-startup-id "amixer set Capture 0%"
+bindsym $mod+F5 exec --no-startup-id "amixer set Capture 40%"
+
+# locker
+bindsym $mod+l exec "i3lock -u -e -p win -c 242424"
+
+# System menu
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+	position bottom
+        tray_output primary
+	strip_workspace_numbers yes
+	colors {
+        	background #2B2C2B
+	        statusline #F9FAF9
+	        separator  #454947
+				#  border  backgr. text
+	        focused_workspace  #F9FAF9 #16A085 #2B2C2B
+	        active_workspace   #595B5B #353836 #FDF6E3
+	        inactive_workspace #595B5B #353836 #EEE8D5
+        	urgent_workspace   #16A085 #FDF6E3 #E5201D
+    }
+
+}
+
+# Theme colors
+# class                 border  backgr. text    indic.  child_border
+client.focused          #808280 #808280 #80FFF9 #FDF6E3
+client.focused_inactive #434745 #434745 #16A085 #454948
+client.unfocused        #434745 #434745 #16A085 #454948
+client.urgent           #CB4B16 #FDF6E3 #16A085 #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+
+client.background       #2B2C2B
+
+# assign application to workspace 
+assign [class="(?i)Firefox"] → $WS1
+assign [class="(?i)Chromium"] → $WS2
+assign [class="(?i)jetbrains-studio" instance="sun-awt-X11-XFramePeer"] → $WS4
+assign [class="(?i)jetbrains-studio" instance="sun-awt-X11-XDialogPeer"] → $WS4
+assign [class="(?i)pcmanfm"] → $WS3
+assign [class="(?i)thunar"] → $WS3
+assign [class="(?i)skype"] → $WS8
+assign [class="Vncviewer"] → $WS7
+assign [class="Vlc"] → $WS9
+assign [class="Steam"] → $WS6
+
+# floating and others
+for_window [title="Android Device Monitor" class="Monitor"] floating disable
+
+# fix graphics glitch
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+ 
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+ 
+for_window [class="notify"] border none
+for_window [class="tk"] floating enable
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse
+for_window [class="(?i)qemu-system"] floating enable
+for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
+# for_window [class="^.*"] border none
+ 
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="__scratchpad"] floating enable
+for_window [instance="__nmtui"] floating enable
+ 
+for_window [urgent=latest] focus
+
+for_window [class="(?i)jetbrains-studio" instance="(?i)sun-awt-X11-XFramePeer"] floating disable
+ 
