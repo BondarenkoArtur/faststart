@@ -185,6 +185,12 @@ bindsym $mod+z floating enable resize set 320 px 882 px move position 1280px 0px
 bindsym $mod+Shift+z floating enable resize set 640 px 882 px move position 960px 0px 
 # bindsym $mod+z floating enable resize set 1280 px 720 px move position center 
 
+# Change borders
+bindsym $mod+minus border pixel 1
+bindsym $mod+Shift+minus border none
+bindsym $mod+equal border normal
+bindsym $mod+Shift+equal border pixel 2
+
 # screenshot
 bindcode $mod+218 exec --no-startup-id "i3-scrot -s"
 bindcode $mod_alt+218 exec --no-startup-id "i3-scrot -w"
